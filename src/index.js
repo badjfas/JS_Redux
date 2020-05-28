@@ -1,28 +1,13 @@
+import {createStore} from "redux"; 
+
 const plus = document.getElementById("add")
 const minus = document.getElementById("minus")
 const number = document.querySelector("span")
 
-let count = 0 ;
+const countModifier = (count=0) => {
+  return count;
 
-number.innerText=count;
+};
+const countStore = createStore(countModifier);
 
-const updateText= () => {
-  number.innerText = count;
-}
-
-const handleAdd = () => {
-  console.log("Add")
-  count = count+1;
-  updateText();
-  return ;
-}
-
-const handleMinus = () => {
-  console.log("Minus")
-  count = count-1;
-  updateText();
-  return ; 
-}
-
-plus.addEventListener("click",handleAdd);
-minus.addEventListener("click",handleMinus);
+console.log(countStore.getState())
