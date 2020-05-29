@@ -14,7 +14,7 @@ const DELETE = "DELETE";
  const deleteToDo = (id) => {
     return {
       type: DELETE,
-      id,
+      id:parseInt(id),
     };
 }
 
