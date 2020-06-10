@@ -18,10 +18,22 @@ const DELETE = "DELETE";
     };
 }
 
-const reducer = (state = [], action) => {
+const initState = {
+  number:0,
+  cart : []
+}
+
+const reducer = (state = initState, action) => {
+    const {cart} = state;
+    console.log("cart:",cart)
     switch (action.type) {
       case ADD:
-        return [{text:action.text , id: Date.now()}, ...state]
+        console.log("state:",state);
+        return {
+          ...state,
+          cart: [{text:action.text , id: Date.now()} , ...state.cart]
+        }
+        // return state.cart[{text:action.text , id: Date.now()}, ...state.cart]
       case DELETE:
         return state.filter((todo) => todo.id !== action.id);
       default:

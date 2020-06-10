@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import ToDo from "./../components/ToDo"
 const Home = ({toDos,addToDo}) => {
-    console.log(toDos);
+    console.log("toDos : ",toDos);
     const [text,setText] = useState("");
     const onChange = (e) => {
         setText(e.target.value);
@@ -22,16 +22,18 @@ const Home = ({toDos,addToDo}) => {
         <button>추가</button>
       </form>
       <ul>
-          {toDos.map(todo=><ToDo {...todo} key={todo.id}/>)}
+      {toDos.map(todo=>{
+          console.log("todo:",todo)
+        return(<ToDo {...todo} key={todo.id}/>)})}
       </ul>
     </>
   );
 };
 
 const getCurrentState = (state) =>{
-    console.log(state);
+    console.log(state.cart);
     return {
-       toDos : state
+       toDos : state.cart
     }
 }
 
